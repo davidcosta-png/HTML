@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="pt-BR" prefix="schema: http://schema.org/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Biblioteca Digital UniFECAF — Versão Semântica (Web 3.0)</title>
+  <meta name="description" content="Biblioteca Digital UniFECAF — acervo, categorias, destaques e serviços. Versão semântica com dados conectados (JSON-LD).">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- JSON-LD: organization, website and sample books for linked data (machine-readable) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Library",
+        "name": "Biblioteca Digital UniFECAF",
+        "url": "https://unifecaf.example/biblioteca",
+        "description": "Acervo digital da UniFECAF com livros, materiais acadêmicos e serviços ao estudante.",
+        "sameAs": ["https://www.unifecaf.br"]
+      },
+      {
+        "@type": "WebSite",
+        "name": "Biblioteca Digital UniFECAF",
+        "url": "https://unifecaf.example/biblioteca"
+      },
+      {
+        "@type": "Book",
+        "name": "Introdução à Programação",
+        "author": {"@type":"Person","name":"A. Silva"},
+        "datePublished":"2022",
+        "image":"assets/imagens/cover1.svg",
+        "inLanguage":"pt-BR",
+        "about": "Programação"
+      },
+      {
+        "@type": "Book",
+        "name": "Metodologia Científica",
+        "author": {"@type":"Person","name":"M. Souza"},
+        "datePublished":"2020",
+        "image":"assets/imagens/cover2.svg",
+        "inLanguage":"pt-BR",
+        "about": "Metodologia"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="#" class="logo" aria-label="Biblioteca Digital UniFECAF" itemscope itemtype="https://schema.org/Library">
+        <img src="assets/imagens/logo.svg" alt="UniFECAF" class="logo-img" itemprop="logo">
+        <span class="visually-hidden" itemprop="name">Biblioteca Digital UniFECAF</span>
+      </a>
+
+      <nav class="main-nav" role="navigation" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="catalog.html">Catálogo</a></li>
+          <li><a href="destaques.html">Destaques</a></li>
+          <li><a href="services.html">Serviços</a></li>
+          <li><a href="contato.html">Contato</a></li>
+          <li><a href="login.html">Entrar</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main role="main">
+    <section id="inicio" class="hero" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1 id="hero-title">Biblioteca Digital UniFECAF</h1>
+          <p class="lead">Acesso inteligente ao acervo: conteúdos recomendados, categorização semântica e suporte ao aprendizado.</p>
+
+          <form class="search" role="search" aria-label="Pesquisar acervo" method="get" action="#">
+            <label for="q" class="visually-hidden">Pesquisar</label>
+            <input id="q" name="q" type="search" placeholder="Pesquisar por título, autor ou assunto" />
+            <button type="submit" class="btn btn-primary">Buscar</button>
+          </form>
+
+          <div class="chips">
+            <a href="#catalogo" class="chip">Categorias</a>
+            <a href="#destaques" class="chip">Destaques</a>
+            <a href="#servicos" class="chip">Serviços</a>
+          </div>
+        </div>
+
+        <aside class="hero-visual" aria-hidden="true">
+          <img src="assets/imagens/hero.svg" alt="Ilustração de livros" class="hero-illus">
+        </aside>
+      </div>
+    </section>
+
+    <section id="catalogo" class="section container" aria-labelledby="catalogo-title">
+      <h2 id="catalogo-title">Catálogo</h2>
+      <p class="muted">Áreas do conhecimento (dados semânticos ligados via JSON-LD)</p>
+
+      <ul class="categories" role="list">
+        <li class="card category" itemscope itemtype="https://schema.org/Thing">
+          <span class="icon" aria-hidden="true">🎓</span>
+          <h3 itemprop="name">Acadêmico</h3>
+          <p itemprop="description">Livros e monografias para cursos e pesquisa.</p>
+        </li>
+        <li class="card category" itemscope itemtype="https://schema.org/Thing">
+          <span class="icon" aria-hidden="true">💻</span>
+          <h3 itemprop="name">Tecnologia</h3>
+          <p itemprop="description">Programação, redes e inovação.</p>
+        </li>
+        <li class="card category" itemscope itemtype="https://schema.org/Thing">
+          <span class="icon" aria-hidden="true">🧪</span>
+          <h3 itemprop="name">Ciências</h3>
+          <p itemprop="description">Conteúdos experimentais e artigos.</p>
+        </li>
+        <li class="card category" itemscope itemtype="https://schema.org/Thing">
+          <span class="icon" aria-hidden="true">📈</span>
+          <h3 itemprop="name">Gestão</h3>
+          <p itemprop="description">Administração, finanças e empreendedorismo.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="destaques" class="section container" aria-labelledby="destaques-title">
+      <h2 id="destaques-title">Destaques</h2>
+      <p class="muted">Recomendações selecionadas — representadas também em dados vinculados</p>
+
+      <div class="grid books">
+        <article class="book card" itemscope itemtype="https://schema.org/Book">
+          <img src="assets/imagens/cover1.svg" alt="Capa: Introdução à Programação" itemprop="image" class="cover">
+          <h3 itemprop="name">Introdução à Programação</h3>
+          <p class="meta" itemprop="author">A. Silva • 2022</p>
+        </article>
+
+        <article class="book card" itemscope itemtype="https://schema.org/Book">
+          <img src="assets/imagens/cover2.svg" alt="Capa: Metodologia Científica" itemprop="image" class="cover">
+          <h3 itemprop="name">Metodologia Científica</h3>
+          <p class="meta" itemprop="author">M. Souza • 2020</p>
+        </article>
+
+        <article class="book card" itemscope itemtype="https://schema.org/Book">
+          <img src="assets/imagens/cover3.svg" alt="Capa: Redes de Computadores" itemprop="image" class="cover">
+          <h3 itemprop="name">Redes de Computadores</h3>
+          <p class="meta" itemprop="author">R. Costa • 2021</p>
+        </article>
+
+        <article class="book card" itemscope itemtype="https://schema.org/Book">
+          <img src="assets/imagens/cover4.svg" alt="Capa: Gestão Estratégica" itemprop="image" class="cover">
+          <h3 itemprop="name">Gestão Estratégica</h3>
+          <p class="meta" itemprop="author">P. Lima • 2019</p>
+        </article>
+      </div>
+
+    </section>
+
+    <section id="servicos" class="section container" aria-labelledby="servicos-title">
+      <h2 id="servicos-title">Serviços</h2>
+      <p class="muted">Atendimento, empréstimos, renovações e suporte à pesquisa.</p>
+
+      <ul class="grid service-list">
+        <li class="service card" itemscope itemtype="https://schema.org/Service">
+          <h3 itemprop="name">Renovação de Empréstimo</h3>
+          <p itemprop="description">Renove seus empréstimos online.</p>
+        </li>
+        <li class="service card" itemscope itemtype="https://schema.org/Service">
+          <h3 itemprop="name">Atendimento ao Estudante</h3>
+          <p itemprop="description">Suporte na pesquisa e normalização de trabalhos.</p>
+        </li>
+        <li class="service card" itemscope itemtype="https://schema.org/Service">
+          <h3 itemprop="name">Empréstimo Interbibliotecas</h3>
+          <p itemprop="description">Acesso a materiais de instituições conveniadas.</p>
+        </li>
+        <li class="service card" itemscope itemtype="https://schema.org/Service">
+          <h3 itemprop="name">Ambiente de Leitura</h3>
+          <p itemprop="description">Espaços para estudo coletivo e leitura presencial.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="contato" class="section container contact" aria-labelledby="contato-title">
+      <h2 id="contato-title">Contato</h2>
+      <address>
+        <p><strong>Email:</strong> <a href="mailto:biblioteca@unifecaf.br">biblioteca@unifecaf.br</a></p>
+        <p><strong>Telefone:</strong> (11) 4000-0000</p>
+      </address>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p>© <span id="year">2026</span> Biblioteca Digital UniFECAF — Interface semântica (Web 3.0 concept)</p>
+      <p class="muted small">Projeto acadêmico — HTML semântico, JSON-LD para dados vinculados e CSS para personalização.</p>
+    </div>
+  </footer>
+
+  <!-- Minimal inline script only for progressive enhancement: update year. No personalization logic is executed — personalization simulated with CSS. -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

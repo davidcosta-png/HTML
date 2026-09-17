@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Entrar — Biblioteca Digital UniFECAF</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .login-hero{background:linear-gradient(90deg,#0b4b84,#1a75c3);color:#fff;padding:3rem 0}
+    .login-card{max-width:420px;margin: -80px auto 2rem;padding:1.2rem;border-radius:8px;background:#fff;box-shadow:0 10px 30px rgba(11,26,43,0.12)}
+    .login-card h2{margin:0 0 0.5rem 0;color:var(--primary)}
+    label{display:block;margin-top:0.5rem}
+  </style>
+</head>
+<body>
+  <header class="site-header"><div class="container header-inner"><a href="index.html" class="logo"><img src="assets/imagens/logo.svg" alt="UniFECAF" class="logo-img"></a></div></header>
+  <section class="login-hero">
+    <div class="container">
+      <h1>Bem-vindo à Biblioteca Digital</h1>
+      <p class="muted">Acesse seus recursos com as credenciais institucionais.</p>
+    </div>
+  </section>
+  <main>
+    <div class="container">
+      <div class="login-card">
+        <h2>Login</h2>
+        <p class="muted">Esta é uma simulação local. Integre com o sistema de autenticação institucional para acesso real.</p>
+        <form>
+          <label for="email">E-mail</label>
+          <input id="email" type="email" style="width:100%;padding:0.6rem;border-radius:6px;border:1px solid #e6eef9">
+          <label for="pass">Senha</label>
+          <input id="pass" type="password" style="width:100%;padding:0.6rem;border-radius:6px;border:1px solid #e6eef9">
+          <div style="margin-top:0.8rem;display:flex;gap:0.6rem;">
+            <button class="btn btn-primary" type="button" onclick="alert('Login demo — integrar SSO/CAS/OAuth')">Entrar</button>
+            <a class="btn" href="catalog.html">Entrar como convidado</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container"><p class="small muted">Login simulado — não envie credenciais reais aqui.</p></div></footer>
+</body>
+</html>

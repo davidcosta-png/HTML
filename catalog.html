@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Catálogo — Biblioteca Digital UniFECAF</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="Catálogo de livros da Biblioteca Digital UniFECAF. Pesquise por título, autor ou assunto.">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo"><img src="assets/imagens/logo.svg" alt="UniFECAF" class="logo-img"></a>
+      <nav class="main-nav" role="navigation" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="catalog.html">Catálogo</a></li>
+          <li><a href="destaques.html">Destaques</a></li>
+          <li><a href="services.html">Serviços</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main class="section container">
+    <h1>Catálogo</h1>
+    <p class="muted">Explore o acervo — clique em um livro para ver detalhes.</p>
+
+    <div style="display:flex;gap:0.6rem;margin-bottom:1rem;align-items:center;flex-wrap:wrap">
+      <input id="search-catalog" type="search" placeholder="Pesquisar por título, autor ou assunto" style="flex:1;padding:0.6rem;border-radius:8px;border:1px solid #d7e3f2;">
+      <select id="filter-category" style="padding:0.55rem;border-radius:8px;border:1px solid #d7e3f2">
+        <option value="">Categorias</option>
+      </select>
+      <select id="sort-select" style="padding:0.55rem;border-radius:8px;border:1px solid #d7e3f2">
+        <option value="relevance">Relevância</option>
+        <option value="title">Título (A–Z)</option>
+        <option value="year_desc">Ano (desc)</option>
+        <option value="year_asc">Ano (asc)</option>
+      </select>
+    </div>
+
+    <div id="books-grid" class="grid books" aria-live="polite"></div>
+    <div id="pagination" style="margin-top:1rem"></div>
+
+    <script src="assets/js/catalog.js"></script>
+    <script src="assets/js/main.js"></script>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <p class="small muted">Versão local — Biblioteca Digital UniFECAF</p>
+    </div>
+  </footer>
+</body>
+</html>

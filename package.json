@@ -1,0 +1,15 @@
+{
+  "name": "biblioteca-unifecaf",
+  "version": "1.0.0",
+  "description": "Biblioteca Digital UniFECAF - mock API and static site",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "contrast": "node assets/js/contrast-check.js css/style.css"
+  },
+  "author": "UniFECAF / Dev",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

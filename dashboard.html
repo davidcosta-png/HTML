@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Painel — Biblioteca Digital UniFECAF</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="Painel central com acesso rápido ao catálogo, destaques, serviços e login — tudo conectado e pronto para integração.">
+</head>
+<body>
+  <a class="skip-link" href="#main">Ir para o conteúdo</a>
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="UniFECAF"><img src="assets/imagens/logo.svg" alt="UniFECAF" class="logo-img"></a>
+      <nav class="main-nav" role="navigation" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="dashboard.html">Painel</a></li>
+          <li><a href="catalog.html">Catálogo</a></li>
+          <li><a href="destaques.html">Destaques</a></li>
+          <li><a href="services.html">Serviços</a></li>
+          <li><a href="contato.html">Contato</a></li>
+          <li><a href="login.html">Entrar</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container section">
+    <h1>Painel Central — Biblioteca Digital UniFECAF</h1>
+    <p class="muted">Uma vista unificada: busca, catálogo, destaques, serviços e acesso rápido.</p>
+
+    <section aria-labelledby="search-title" class="card" style="margin-bottom:1rem">
+      <h2 id="search-title">Buscar no acervo</h2>
+      <div style="display:flex;gap:0.6rem;align-items:center">
+        <input id="search-main" type="search" placeholder="Pesquisar por título, autor, assunto" style="flex:1;padding:0.6rem;border-radius:8px;border:1px solid #d7e3f2">
+        <button id="search-go" class="btn btn-primary">Buscar</button>
+      </div>
+      <p class="muted small">Resultados aparecem abaixo — clique em um livro para abrir a página de detalhes.</p>
+    </section>
+
+    <section aria-labelledby="featured-title" class="card">
+      <h2 id="featured-title">Destaques</h2>
+      <div id="featured" style="display:flex;gap:0.6rem;overflow:auto;padding:0.5rem 0"></div>
+    </section>
+
+    <section aria-labelledby="catalog-preview" class="card">
+      <h2 id="catalog-preview">Catálogo (preview)</h2>
+      <div id="dashboard-books" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-top:0.6rem"></div>
+      <div style="margin-top:0.8rem"><a href="catalog.html" class="btn">Abrir catálogo completo</a></div>
+    </section>
+
+    <section aria-labelledby="services-preview" class="card">
+      <h2 id="services-preview">Serviços rápidos</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.8rem">
+        <a class="card" href="services.html#loan">Renovação de Empréstimo</a>
+        <a class="card" href="services.html#help">Atendimento ao Estudante</a>
+        <a class="card" href="services.html#inter">Empréstimo Interbibliotecas</a>
+        <a class="card" href="contato.html">Contato e Suporte</a>
+      </div>
+    </section>
+
+    <section aria-labelledby="quick-links" class="card">
+      <h2 id="quick-links">Acesso rápido</h2>
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap">
+        <a class="btn" href="login.html">Entrar</a>
+        <a class="btn" href="destaques.html">Destaques</a>
+        <a class="btn" href="dashboard.html">Painel</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer"><div class="container"><p class="small muted">Painel integrado — pronto para backend e PWA.</p></div></footer>
+
+  <script>
+    // lightweight dashboard interactions
+    (async function(){
+      const booksRes = await fetch('assets/books.json');
+      const books = await booksRes.json();
+      const featuredEl = document.getElementById('featured');
+      const dashBooks = document.getElementById('dashboard-books');
+
+      // show first 6 as featured
+      books.slice(0,6).forEach(b=>{
+        const card = document.createElement('a'); card.href = `book.html?id=${encodeURIComponent(b.id)}`; card.className='card';
+        card.style.minWidth='200px';
+        card.innerHTML = `<img src="${b.cover}" alt="Capa: ${b.title}" style="width:140px;height:200px;object-fit:cover;border-radius:6px;margin-right:0.6rem;float:left"> <div style="overflow:hidden"><strong>${b.title}</strong><div class='muted small'>${b.author} • ${b.year}</div></div><div style="clear:both"></div>`;
+        featuredEl.appendChild(card);
+      });
+
+      // grid preview
+      books.slice(0,8).forEach(b=>{
+        const a = document.createElement('a'); a.href=`book.html?id=${encodeURIComponent(b.id)}`; a.className='book card';
+        a.innerHTML = `<img src="${b.cover}" alt="Capa: ${b.title}" class="cover"> <h3>${b.title}</h3> <p class="meta">${b.author} • ${b.year}</p>`;
+        dashBooks.appendChild(a);
+      });
+
+      document.getElementById('search-go').addEventListener('click', ()=>{
+        const q = document.getElementById('search-main').value.trim();
+        if(!q) { alert('Digite um termo para pesquisar.'); return; }
+        // navigate to catalog with query param (catalog.js doesn't read query yet, but this is preparation)
+        location.href = `catalog.html?q=${encodeURIComponent(q)}`;
+      });
+
+    })();
+  </script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

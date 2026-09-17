@@ -1,0 +1,11 @@
+{
+  "name": "Biblioteca Digital UniFECAF",
+  "short_name": "UniFECAF Lib",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f7fbff",
+  "theme_color": "#002b5b",
+  "icons": [
+    { "src": "assets/imagens/logo.svg", "sizes": "160x40", "type": "image/svg+xml" }
+  ]
+}

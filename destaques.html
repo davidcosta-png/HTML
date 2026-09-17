@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Destaques — Biblioteca Digital UniFECAF</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container header-inner"><a href="index.html" class="logo"><img src="assets/imagens/logo.svg" alt="UniFECAF" class="logo-img"></a></div></header>
+  <main class="container section">
+    <h1>Destaques</h1>
+    <p class="muted">Livros recomendados e em destaque.</p>
+    <div id="featured-grid" class="grid books"></div>
+  </main>
+  <footer class="site-footer"><div class="container"><p class="small muted">Versão local — Biblioteca Digital UniFECAF</p></div></footer>
+  <script>
+    (async function(){
+      const res = await fetch('assets/books.json');
+      const books = await res.json();
+      const grid = document.getElementById('featured-grid');
+      books.slice(0,12).forEach(b=>{
+        const a = document.createElement('a'); a.href = `book.html?id=${encodeURIComponent(b.id)}`; a.className='book card';
+        const img = document.createElement('img'); img.src = b.cover; img.alt = 'Capa: '+b.title; img.className='cover';
+        const h3 = document.createElement('h3'); h3.textContent = b.title;
+        const p = document.createElement('p'); p.className='meta'; p.textContent = `${b.author} • ${b.year}`;
+        a.appendChild(img); a.appendChild(h3); a.appendChild(p);
+        grid.appendChild(a);
+      });
+    })();
+  </script>
+</body>
+</html>
